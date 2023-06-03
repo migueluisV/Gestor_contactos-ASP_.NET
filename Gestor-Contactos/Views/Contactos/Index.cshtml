@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Gestor_Contactos.Models.Contactos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Contactos</h1>
+
+<p><a asp-action="Create">Crear Nuevo</a></p>
+
+<div class="d-flex justify-content-between">
+    <div>
+        <form class="form-inline" asp-action="ResultadosBusqueda">
+            <div class="form-group mb-2">
+                <label for="FraseBuscar" class="control-label"></label>
+                <input name="FraseBuscar" class="form-control" placeholder="Escribe para buscar..." />
+            </div>
+            <div class="form-group mb-2">
+                <input type="submit" value="Buscar" class="btn btn-primary" style="margin-left:10px;" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <form class="form-inline" asp-action="ResultadosPorGrupos">
+            <div class="form-group mb-2">
+                <label for="FraseBuscar" class="control-label">Ver contactos por grupo</label>
+                <select name="FraseBuscar" class="form-select"  style="margin-left:10px;">
+                    <option selected>No asignado</option>
+                    <option value="Contactos de mergencia">Contactos de emergencia</option>
+                    <option value="Compañeros de trabajo">Compañeros de trabajo</option>
+                    <option value="Familia">Familia</option>
+                    <option value="Amigos">Amigos</option>
+                </select>
+            </div>
+            <div class="form-group mb-2">
+                <input type="submit" value="Ver" class="btn btn-primary" style="margin-left:10px;" />
+            </div>
+        </form>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Favorito</th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["NombreSortParm"]">Nombre(s)</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["ApellidoSortParm"]">Apellido(s)</a></th>
+            <th>Número telefónico</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Favorito)</td>
+            <td>@Html.DisplayFor(modelItem => item.Nombres)</td>
+            <td>@Html.DisplayFor(modelItem => item.Apellidos)</td>
+            <td>@Html.DisplayFor(modelItem => item.NumTel)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

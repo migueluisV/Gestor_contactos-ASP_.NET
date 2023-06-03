@@ -1,0 +1,44 @@
+﻿@model Gestor_Contactos.Models.Contactos
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Contactos</h1>
+
+<h3>¿Está seguro que desea eliminar este contacto?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Id)</dd>
+        <dt class="col-sm-2">Favorito</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Favorito)</dd>
+        <dt class="col-sm-2">Nombre(s)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Nombres)</dd>
+        <dt class="col-sm-2">Apellido(s)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Apellidos)</dd>
+        <dt class="col-sm-2">Número telefónico</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.NumTel)</dd>
+        <dt class="col-sm-2">Trabajo</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Trabajo)</dd>
+        <dt class="col-sm-2">Correo</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Correo)</dd>
+        <dt class="col-sm-2">Grupo</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Grupo)</dd>
+        <dt class="col-sm-2">Dirección</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Direccion)</dd>
+        <dt class="col-sm-2">Relación</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Relacion)</dd>
+        <dt class="col-sm-2">Notas</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Notas)</dd>
+        <dt class="col-sm-2">Fecha de creación</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.FechaCreacion)</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Regresar</a>
+    </form>
+</div>
